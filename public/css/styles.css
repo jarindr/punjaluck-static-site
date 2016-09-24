@@ -6,6 +6,9 @@ body {
   font-size: 16px;
   font-family: Montserrat;
 }
+div {
+  box-sizing: border-box;
+}
 
 ul {
   list-style-type: none;
@@ -28,10 +31,20 @@ h1 {
 .grey {
   color: #8a8a8a;
 }
+.fw300 {
+  font-weight: 300!important;
+}
+.fw400 {
+  font-weight: 400!important;
+}
+.uppercase {
+  text-transform: uppercase;
+}
 .board-position {
   font-size: 12px;
   line-height: 12px!important;
   text-transform: uppercase;
+  font-weight: 400;
 }
 .board-thai-name {
   font-size: 13px;
@@ -42,6 +55,7 @@ h1 {
 }
 .board-detail-name {
   line-height: 15px;
+  margin-top: 15px;
 }
 .modal-hide-container {
   position: absolute;
@@ -93,10 +107,10 @@ h1 {
   margin: 0 auto;
 }
 .modal-hide .modal-content {
-  padding-left: 5%;
+  padding: 0 5% 0 5%;
   display: inline-block;
   vertical-align: middle;
-  max-width: 65%;
+  max-width: 69%;
 }
 
 .side-navigation {
@@ -447,9 +461,8 @@ right: 15%
 .board-detail {
   text-align: left;
   font-family: kanit;
-  margin-top: 20px;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 300;
 }
 .board-detail p{
   color: #777777;
