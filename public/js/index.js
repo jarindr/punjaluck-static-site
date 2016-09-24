@@ -90,13 +90,17 @@ function modalHideInit () {
 
 }
 
-function handleClickEvents() {
+function handleClickEvents () {
   $('.collapse--faq').click((e) => {
     const $target = $(e.currentTarget)
     $target.toggleClass('active')
     $target.siblings().removeClass('active')
     $target.find('.collapse-content').slideToggle('fast')
     $target.siblings().find('.collapse-content').slideUp('fast')
+  })
+  $('.readmore').click((e)=>{
+    $('.hidden-readmore').show()
+    $(e.currentTarget).hide()
   })
 }
 
