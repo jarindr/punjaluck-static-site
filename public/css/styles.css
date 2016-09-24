@@ -6,6 +6,12 @@ body {
   font-size: 16px;
   font-family: Montserrat;
 }
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
 div {
   box-sizing: border-box;
 }
@@ -36,6 +42,12 @@ h1 {
 }
 .fw400 {
   font-weight: 400!important;
+}
+.fs15 {
+  font-size: 15px!important;
+}
+.fs17 {
+  font-size: 17px!important;
 }
 .uppercase {
   text-transform: uppercase;
@@ -82,6 +94,7 @@ h1 {
   top: 10px;
 }
 .modal-hide {
+  transform: translateZ(0);
   position: absolute;
   z-index: 30;
   background-color: #f7f7f7;
@@ -119,16 +132,33 @@ h1 {
   right: 25px;
   transform: translateY(-50%);
   z-index: 200;
-  text-indent: -9999px;
+  text-align: right;
+}
+.dot-nav-name {
+  opacity: 0;
+  font-size: 8px;
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 400;
+  color: #545454;
+  line-height: 8px;
+  transition: 0.1s
+}
+.dot-nav-name.acitve {
+  opacity: 1;
+  transition: 0.1s
 }
 .side-navigation .dot-nav {
-  width: 8px;
-  height: 8px;
-  margin: 5px 0;
+  width: 12px;
+  height: 12px;
+  margin: 10px 0;
   border-radius: 50%;
   background-color: white;
   border: 2px solid #c3c3c3;
   cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
 }
 .side-navigation .dot-nav.active {
   background-color: #c3c3c3;
@@ -162,6 +192,7 @@ h1 {
 
 .logo-box .logo-des {
   text-align: center;
+  color: black;
 }
 
 .container {
@@ -294,8 +325,8 @@ h1 {
   text-align: center;
   padding-top: 40px;
   box-sizing: border-box;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 80px;
+  padding-right: 80px;
   height: calc(100vh - 70px);
   background-color: white;
   border-bottom: 1px solid #dfdfdf;
@@ -372,7 +403,7 @@ right: 15%
   background-position: center;
   background-size: cover;
   background-position: fixed;
-  z-index: 4;k
+  z-index: 4;
 }
 #vision-page h1 {
   color: white;
@@ -535,6 +566,7 @@ right: 15%
   color: black;
   padding: 12px 50px 12px 50px;
   vertical-align: middle;
+  cursor: pointer;
 }
 .collapse--faq.active .collapse-header {
   background-color: #a61a1f;
@@ -603,8 +635,25 @@ right: 15%
 .circle-navigation.active {
   background-color: white;
 }
+.nav-hidden-name {
+  display: none;
+}
 
-
+.facebook-icon {
+  border-radius: 50%;
+  border: 1px solid #939191;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+.facebook-icon img{
+  cursor: pointer;
+  max-width: 14px;
+  margin-left: -1px;
+  margin-top: -4px;
+  opacity: 0.5;
+}
 /*=================PLUS MINUS */
 
 .xbutton {
@@ -624,7 +673,7 @@ right: 15%
   left: 50%;
   width: 2px;
   height: 100%;
-  margin-left: -2px;
+  margin-left: -1px;
 }
 .xbutton::after {
   content: "";
@@ -650,7 +699,12 @@ right: 15%
   .section {
     padding-top: 20px;
     padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
     height: auto;
+  }
+  .side-navigation {
+    display: none;
   }
   .board-container {
     padding: 0 5%;
@@ -663,7 +717,23 @@ right: 15%
   }
 }
 @media only screen and (max-width: 668px) {
-
+  body.modal-open {
+      overflow: hidden;
+  }
+  .slide-arrows {
+    position: absolute;
+    top: -10px;
+  }
+  .modal-hide {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 70vh;
+    overflow-y: scroll;
+  }
+  .modal-content {
+    max-width: 100%!important;
+  }
   .nav-bar {
     position: fixed;
     padding: 0 20px;

@@ -3,6 +3,7 @@ $(document).ready( () => {
   if($(window).width() > 768 ) {
     initSideBarNav()
   }
+  triggerDotNav()
   bindScrollEvent()
   $('#slider1').unslider({
     arrows: {
@@ -18,7 +19,8 @@ function initSideBarNav () {
   let dots = ''
   $('.section').each((index, el) => {
     const id = $(el).prop('id')
-    dots += `<div class='dot-nav'>${id}</div>`
+    const name = $(el).find('.nav-hidden-name').html()
+    dots += `<div class='dot-nav-container'><span class='dot-nav-name'><b>${name}</b></span> <div class='dot-nav' data-attribute=${id}></div></div>`
   })
   const htmlDots = $.parseHTML(dots)
   $(htmlDots).appendTo($('.side-navigation'))
@@ -38,19 +40,25 @@ function bindScrollEvent () {
       $('.parallax').each((index,el) => {
         parallax($(el), scrollPosition)
       })
-      $('.dot-nav').each((index,el) => {
-        const id = $(el).text()
-        const $section = $(`#${id}`)
-        const top = $section.offset().top - 71
-        const bottom = top + $section.outerHeight(true)
-        if(bottom > scrollPosition && top < scrollPosition) {
-          $(el).addClass('active')
-        } else {
-          $(el).removeClass('active')
-        }
-      })
+      triggerDotNav()
     })
   }
+}
+function triggerDotNav () {
+  const scrollPosition = $(window).scrollTop()
+  $('.dot-nav').each((index,el) => {
+    const id = $(el).attr('data-attribute')
+    const $section = $(`#${id}`)
+    const top = $section.offset().top - 71
+    const bottom = top + $section.outerHeight(true)
+    if(bottom > scrollPosition && top < scrollPosition) {
+      $(el).addClass('active')
+      $(el).siblings('.dot-nav-name').addClass('acitve')
+    } else {
+      $(el).removeClass('active')
+      $(el).siblings('.dot-nav-name').removeClass('acitve')
+    }
+  })
 }
 
 function initNavbarHandler () {
@@ -59,7 +67,7 @@ function initNavbarHandler () {
     $('.nav-bar__navigation-container').toggleClass('active')
   })
   $(document).on('click','.dot-nav', (e) => {
-    const top = $(`#${$(e.currentTarget).text()}`).offset().top - 70
+    const top = $(`#${$(e.currentTarget).attr('data-attribute')}`).offset().top - 70
     $('html, body').animate({
       scrollTop: top
     }, 500)
@@ -71,10 +79,12 @@ function modalHideInit () {
     e.preventDefault()
     const $this = $(e.currentTarget)
     const id = $this.attr('href')
+    $('body').addClass('modal-open')
     $(id).fadeIn('fast')
   })
   $('.x-modal').click(e=>{
     const $this = $(e.currentTarget)
+    $('body').removeClass('modal-open')
     $('.modal-hide-container').fadeOut('fast')
   })
 
