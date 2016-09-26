@@ -755,7 +755,7 @@ right: 15%
     overflow: hidden;
   }
   .modal-content {
-    height: 50vh;
+    height: 80vh;
     overflow-y: scroll;
   }
 }
