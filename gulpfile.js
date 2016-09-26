@@ -39,7 +39,9 @@ gulp.task('build:critical',['build'], () => {
     base: 'build',
     src: 'index.html',
     dest: 'build/index.html',
-    minify: true
+    minify: true,
+    height: 3000,
+    width: 2000
   })
 })
 
