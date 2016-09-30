@@ -51,7 +51,7 @@ function triggerDotNav () {
     const id = $(el).attr('data-attribute')
     const $section = $(`#${id}`)
     const top = $section.offset().top - 81 - 50
-    const bottom = top + $section.outerHeight(true) - 50
+    const bottom = top + $section.outerHeight(true)
     if(bottom > scrollPosition && top < scrollPosition) {
       $(el).addClass('active')
       $(el).siblings('.dot-nav-name').addClass('acitve')
