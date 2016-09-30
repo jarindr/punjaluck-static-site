@@ -9,6 +9,7 @@ $(document).ready( () => {
     arrows: {
       prev: '<i class="flaticon-back slide-arrows left"></i>',
       next: '<i class="flaticon-next slide-arrows right"></i>',
+      dots: false
     }
   })
   handleClickEvents()
@@ -49,8 +50,8 @@ function triggerDotNav () {
   $('.dot-nav').each((index,el) => {
     const id = $(el).attr('data-attribute')
     const $section = $(`#${id}`)
-    const top = $section.offset().top - 71
-    const bottom = top + $section.outerHeight(true)
+    const top = $section.offset().top - 81 - 50
+    const bottom = top + $section.outerHeight(true) - 50
     if(bottom > scrollPosition && top < scrollPosition) {
       $(el).addClass('active')
       $(el).siblings('.dot-nav-name').addClass('acitve')
@@ -67,10 +68,16 @@ function initNavbarHandler () {
     $('.nav-bar__navigation-container').toggleClass('active')
   })
   $(document).on('click','.dot-nav', (e) => {
-    const top = $(`#${$(e.currentTarget).attr('data-attribute')}`).offset().top - 70
+    const top = $(`#${$(e.currentTarget).attr('data-attribute')}`).offset().top - 80
     $('html, body').animate({
       scrollTop: top
-    }, 500)
+    }, 1500, 'easeInOutExpo')
+  })
+  $(document).on('mouseover','.dot-nav', (e) => {
+    $(e.currentTarget).siblings('.dot-nav-name').addClass('active')
+  })
+  $(document).on('mouseout','.dot-nav', (e) => {
+    $(e.currentTarget).siblings('.dot-nav-name').removeClass('active')
   })
 }
 
@@ -95,8 +102,8 @@ function handleClickEvents () {
     const $target = $(e.currentTarget)
     $target.toggleClass('active')
     $target.siblings().removeClass('active')
-    $target.find('.collapse-content').slideToggle('fast')
-    $target.siblings().find('.collapse-content').slideUp('fast')
+    $target.find('.collapse-content').slideToggle(400)
+    $target.siblings().find('.collapse-content').slideUp(400)
   })
   $('.readmore').click((e)=>{
     $('.hidden-readmore').show()
@@ -106,7 +113,7 @@ function handleClickEvents () {
 
 function parallax (target,scrollPosition) {
   const parent = target.parent()
-  const bottom = parent.offset().top + parent.outerHeight(true) - 70
+  const bottom = parent.offset().top + parent.outerHeight(true) - 80
   const top = parent.position().top
   if (bottom > scrollPosition && top  < scrollPosition) {
     const move = parseInt((scrollPosition -  top)/4)

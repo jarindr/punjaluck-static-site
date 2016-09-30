@@ -34,4 +34,4 @@ color: rgb(116, 116, 116);
 .flaticon-left-quotes-sign:before { content: "\f102"; }
 .flaticon-next:before { content: "\f103"; }
 .flaticon-right-quotes-sign:before { content: "\f104"; }
-.flaticon-search:before { content: "\f105"; font-size: 20px;}
+.flaticon-search:before { content: "\f105"; font-size: 18px; color:#aaa8a8;}

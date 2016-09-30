@@ -149,6 +149,9 @@ h1 {
   opacity: 1;
   transition: 0.1s
 }
+.active {
+  opacity: 1;
+}
 .side-navigation .dot-nav {
   width: 12px;
   height: 12px;
@@ -206,8 +209,9 @@ h1 {
 .nav-bar {
   position: fixed;
   top: 0;
+  padding-top: 10px;
   display: flex;
-  height: 70px;
+  height: 80px;
   align-items: center;
   background-color: white;
   box-sizing: border-box;
@@ -233,8 +237,11 @@ h1 {
 .nav-bar__navigation {
   padding: 0 10px;
   font-size: 12px;
-  color: rgb(66, 66, 66);
+  color: #aaa8a8;
   cursor: pointer;
+}
+.nav-bar__navigation.active{
+  color: black;
 }
 
 .nav-bar__navigation.ticket {
@@ -327,9 +334,8 @@ h1 {
   box-sizing: border-box;
   padding-left: 80px;
   padding-right: 80px;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 80px);
   background-color: white;
-  border-bottom: 1px solid #dfdfdf;
   overflow: hidden;
   min-height: 700px;
 }
@@ -341,10 +347,10 @@ h1 {
   cursor: pointer;
 }
 .slide-arrows.left{
-left: 15%
+  left: 12%
 }
 .slide-arrows.right{
-right: 15%
+  right: 12%
 }
 
 .slider, .slider-content {
@@ -369,7 +375,7 @@ right: 15%
 }
 
 .sections {
-  margin-top: 70px;
+  margin-top: 80px;
 }
 #business-page {
   background-color: white;
@@ -494,8 +500,10 @@ right: 15%
   font-weight: 300;
 }
 .board-detail p{
-  color: #777777;
+  color: black;
+  font-size: 18px;
   line-height: 30px;
+  font-weight: 400;
 }
 .board-detail h2{
   color: #777777;
@@ -537,7 +545,7 @@ right: 15%
   color:rgb(200, 35, 60) !important;
 }
 .board-card {
-  padding: 0 30px;
+  padding: 0;
 }
 .board-card img {
   width: 100%;
@@ -663,8 +671,8 @@ right: 15%
 .xbutton {
     vertical-align: middle;
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     display: inline-block;
     margin-right: 10px;
 }
@@ -672,23 +680,23 @@ right: 15%
   content: "";
   position: absolute;
   background-color: black;
-  transition: transform 0.25s ease-out;
+  /*transition: transform 0.25s ease-out;*/
   top: 0;
   left: 50%;
   width: 2px;
   height: 100%;
-  margin-left: -1px;
+  margin-left: -1.5px;
 }
 .xbutton::after {
   content: "";
   position: absolute;
   background-color: black;
-  transition: transform 0.25s ease-out;
+  /*transition: transform 0.25s ease-out;*/
   top: 50%;
   left: 0;
   width: 100%;
   height: 2px;
-  margin-top: -2px;
+  margin-top: -1.5px;
 }
 .collapse--faq.active .xbutton::before {
   transform: rotate(90deg);
@@ -715,6 +723,9 @@ right: 15%
     top: 0;
     bottom: 0;
   }
+  .logo-box {
+    width: 200px;
+  }
   .side-navigation {
     display: none;
   }
@@ -732,13 +743,13 @@ right: 15%
     text-align: center;
   }
   .board-card img {
-    width: 80%;
+    width: 70%;
   }
   .slide-arrows.left{
-  left: -10px;
+  left: -15px
   }
   .slide-arrows.right{
-  right: -10px;
+  right: -15px;
   }
   .modal-hide > img {
     display: none;

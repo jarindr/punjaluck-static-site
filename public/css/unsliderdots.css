@@ -14,6 +14,7 @@
 .unslider-nav ol {
   list-style: none;
   text-align: center;
+  display: none;
 }
 .unslider-nav ol li {
   display: inline-block;
