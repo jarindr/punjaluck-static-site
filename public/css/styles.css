@@ -503,12 +503,12 @@ h1 {
 .partner-detail .sub-title {
   font-style: italic;
   font-weight: 400;
-  font-size: 18px!important;
+  font-size: 17px!important;
   color: #575757;
 }
 .partner-detail p{
-  color: #575757;
-  font-size: 18px;
+  color: #8c8c8c;
+  font-size: 17px;
   line-height: 25px;
   font-weight: 400;
 }
