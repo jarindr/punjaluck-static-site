@@ -103,6 +103,7 @@ h1 {
   margin: 0 auto;
   text-align: left;
   width: 80%;
+  max-width: 1000px;
   box-shadow: 1px 1px 10px 1px rgb(222, 222, 222);
 }
 .modal-hide--logo {
@@ -120,7 +121,7 @@ h1 {
   margin: 0 auto;
 }
 .modal-hide .modal-content {
-  padding: 5%;
+  padding: 2% 8% 2% 8%;
   display: inline-block;
   vertical-align: middle;
   max-width: 69%;
@@ -195,7 +196,7 @@ h1 {
 
 .logo-box .logo-des {
   text-align: center;
-  color: black;
+  color: #6b6868;
 }
 
 .container {
@@ -402,7 +403,7 @@ h1 {
   color: #363636;
   font-family: kanit;
   max-width: 700px;
-  text-align: justify;
+  text-align: left;
 }
 #vision-page {
   background-position: center;
@@ -731,6 +732,9 @@ h1 {
   }
   .board-container {
     padding: 0 5%;
+  }
+  .board-detail br{
+    display: none
   }
   .corporate-quote {
     opacity: 1;
