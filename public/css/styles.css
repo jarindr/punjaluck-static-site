@@ -494,6 +494,28 @@ h1 {
 .corporate-quote .logo img{
   width: 80%;
 }
+.partner-detail {
+  text-align: left;
+  font-family: kanit;
+  font-size: 16px;
+  font-weight: 300;
+}
+.partner-detail .sub-title {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px!important;
+  color: #575757;
+}
+.partner-detail p{
+  color: #575757;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 400;
+}
+.partner-detail h2{
+  margin: 10px 0;
+  color: #575757;
+}
 .board-detail {
   text-align: left;
   font-family: kanit;
@@ -655,10 +677,20 @@ h1 {
 .facebook-icon {
   border-radius: 50%;
   border: 1px solid #939191;
-  width: 25px;
-  height: 25px;
+  width: 26px;
+  height: 26px;
   text-align: center;
   cursor: pointer;
+  display: inline-block;
+}
+.web-icon img {
+  padding: 0!important;
+  margin: 0!important;
+  width: 100%!important;
+  max-width: 25px!important;
+}
+.web-icon {
+  display: inline-block;
 }
 .facebook-icon img{
   cursor: pointer;
