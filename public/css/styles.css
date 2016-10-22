@@ -764,10 +764,7 @@ h1 {
   .board-container {
     padding: 0 5%;
   }
-  .board-detail span br{
-    display: none
-  }
-  .partner-detail br{
+  .modal-content br{
     display: none
   }
   .corporate-quote {
