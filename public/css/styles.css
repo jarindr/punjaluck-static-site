@@ -677,15 +677,15 @@ h1 {
 .facebook-icon {
   border-radius: 50%;
   border: 1px solid #939191;
-  width: 26px;
-  height: 26px;
+  width: 27px;
+  height: 27px;
   text-align: center;
   cursor: pointer;
   display: inline-block;
 }
 .web-icon img {
   padding: 0!important;
-  margin: 0!important;
+  margin: -3px 0 0 0!important;
   width: 100%!important;
   max-width: 25px!important;
 }
