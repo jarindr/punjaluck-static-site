@@ -1,5 +1,6 @@
 $(document).ready( () => {
   initNavbarHandler()
+  modalHideInit()
   if($(window).width() > 768 ) {
     initSideBarNav()
   }
@@ -13,7 +14,7 @@ $(document).ready( () => {
     }
   })
   handleClickEvents()
-  modalHideInit()
+  window.scrollTo(window.scrollX, window.scrollY + 1)
 })
 
 function initSideBarNav () {
@@ -29,19 +30,18 @@ function initSideBarNav () {
 
 function bindScrollEvent () {
   const $window = $(window)
-  const $video = $('#punjaluck-animate')
-  $video[0].onended = () => {
-    $video.remove()
-    $('.corporate-quote').css({ opacity: 1 })
-  }
+  let playedGif = false
   if($(window).width() > 768 ) {
     window.addEventListener('scroll', ()=>{
       const scrollPosition = $window.scrollTop()
-      playVideo($video, scrollPosition)
-      $('.parallax').each((index,el) => {
-        parallax($(el), scrollPosition)
-      })
+      // $('.parallax').each((index,el) => {
+      //   parallax($(el), scrollPosition)
+      // })
       triggerDotNav()
+      if(!playedGif) {
+        playGifImage(scrollPosition)
+        playedGif = true
+      }
     })
   }
 }
@@ -123,9 +123,14 @@ function parallax (target,scrollPosition) {
   }
 }
 
-function playVideo (video, scrollPosition) {
-  const position = video.position()
+function playGifImage (scrollPosition) {
+  const position = $('#corporate-page').position()
   if (position.top < scrollPosition + $(window).height()){
-    video[0].play()
+    $('.logo-fade-1').attr('src', `./images/LOGO-Panjaluk.gif?${Date.now()}`)
+    setTimeout(() => {
+      $('.logo-fade-1').animate({opacity: 0}, 1000, () => {
+        $('.logo-fade-2').attr('src', `./images/WEB_CHARM.gif?${Date.now()}`)
+      })
+    }, 4000)
   }
 }
