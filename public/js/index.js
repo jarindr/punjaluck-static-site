@@ -39,8 +39,7 @@ function bindScrollEvent () {
       // })
       triggerDotNav()
       if(!playedGif) {
-        playGifImage(scrollPosition)
-        playedGif = true
+        playGifImage(scrollPosition, () => playedGif = true)
       }
     })
   }
@@ -123,9 +122,10 @@ function parallax (target,scrollPosition) {
   }
 }
 
-function playGifImage (scrollPosition) {
+function playGifImage (scrollPosition, callback) {
   const position = $('#corporate-page').position()
   if (position.top < scrollPosition + $(window).height()){
+    callback()
     $('.logo-fade-1').attr('src', `./images/LOGO-Panjaluk.gif?${Date.now()}`)
     setTimeout(() => {
       $('.logo-fade-1').animate({opacity: 0}, 1000, () => {
