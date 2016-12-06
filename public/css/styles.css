@@ -497,6 +497,9 @@ h1 {
 .red {
   color:#9c171a;
 }
+.black {
+  color: black!important;
+}
 .corporate-quote .logo {
   vertical-align:middle;
   text-align: center;
@@ -637,6 +640,9 @@ h1 {
   color: #626262;
   font-family: kanit;
 }
+.collapse--faq .collapse-content ul li{
+  list-style-type: decimal;
+}
 .collapse--faq.active .collapse-content {
   display: block;
 }
@@ -648,7 +654,7 @@ h1 {
   color: white;
   font-size: 12px;
   width: fit-content;
-  padding: 10px 40px;
+  padding: 5px 70px;
   cursor: pointer;
   margin: 30px auto;
 }
