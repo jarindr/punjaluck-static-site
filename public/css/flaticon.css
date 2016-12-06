@@ -32,6 +32,6 @@ color: rgb(116, 116, 116);
 .flaticon-back:before { content: "\f100"; }
 .flaticon-facebook:before { content: "\f101"; }
 .flaticon-left-quotes-sign:before { content: "\f102"; }
-.flaticon-next:before { content: "\f103"; }
+.flaticon-next:before { content: "\f103"; color:#979797; }
 .flaticon-right-quotes-sign:before { content: "\f104"; }
-.flaticon-search:before { content: "\f105"; font-size: 18px; color:#aaa8a8;}
+.flaticon-search:before { content: "\f105"; font-size: 18px; color:#979797;}

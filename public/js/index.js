@@ -1,6 +1,10 @@
+let navigateBySide = false
+let currentSection = null
+
 $(document).ready( () => {
   initNavbarHandler()
   modalHideInit()
+  backgroundChanger()
   if($(window).width() > 768 ) {
     initSideBarNav()
   }
@@ -16,7 +20,14 @@ $(document).ready( () => {
   handleClickEvents()
   window.scrollTo(window.scrollX, window.scrollY + 1)
 })
-
+function backgroundChanger () {
+  $("#vision-page").bgswitcher({
+    images: [
+      "../images/bg1vision.jpg",
+      "../images/bg2vision.jpg"
+    ]
+  })
+}
 function initSideBarNav () {
   let dots = ''
   $('.section').each((index, el) => {
@@ -53,10 +64,16 @@ function triggerDotNav () {
     const bottom = top + $section.outerHeight(true)
     if(bottom > scrollPosition && top < scrollPosition) {
       $(el).addClass('active')
-      $(el).siblings('.dot-nav-name').addClass('acitve')
+      if (!navigateBySide) {
+        $(el).siblings('.dot-nav-name').addClass('active')
+      } else if (navigateBySide && currentSection === id) {
+        $(el).siblings('.dot-nav-name').addClass('active')
+      } else {
+        $(el).siblings('.dot-nav-name').removeClass('active')
+      }
     } else {
+      $(el).siblings('.dot-nav-name').removeClass('active')
       $(el).removeClass('active')
-      $(el).siblings('.dot-nav-name').removeClass('acitve')
     }
   })
 }
@@ -67,10 +84,15 @@ function initNavbarHandler () {
     $('.nav-bar__navigation-container').toggleClass('active')
   })
   $(document).on('click','.dot-nav', (e) => {
+    navigateBySide = true
+    currentSection = $(e.currentTarget).attr('data-attribute')
     const top = $(`#${$(e.currentTarget).attr('data-attribute')}`).offset().top - 80
     $('html, body').animate({
       scrollTop: top
     }, 1500, 'easeInOutExpo')
+    setTimeout(() => {
+      navigateBySide = false
+    }, 1600)
   })
   $(document).on('mouseover','.dot-nav', (e) => {
     $(e.currentTarget).siblings('.dot-nav-name').addClass('active')
