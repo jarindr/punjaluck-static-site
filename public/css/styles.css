@@ -18,16 +18,6 @@ div {
   box-sizing: border-box;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-ul li {
-  display: inline;
-}
-
 h1 {
   color:#9c171a;
   font-size: 40px!important;
@@ -347,7 +337,7 @@ h1 {
   box-sizing: border-box;
   padding-left: 80px;
   padding-right: 80px;
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   background-color: white;
   overflow: hidden;
 }
@@ -635,6 +625,7 @@ h1 {
   padding: 12px 50px 12px 50px;
   vertical-align: middle;
   cursor: pointer;
+  font-family: kanit;
 }
 .collapse--faq.active .collapse-header {
   background-color: #a61a1f;
@@ -644,6 +635,7 @@ h1 {
   background-color: #e0e0e0;
   padding: 10px 5%;
   color: #626262;
+  font-family: kanit;
 }
 .collapse--faq.active .collapse-content {
   display: block;
