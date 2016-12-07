@@ -57,6 +57,13 @@ function bindScrollEvent () {
 }
 function triggerDotNav () {
   const scrollPosition = $(window).scrollTop()
+  $('.dot-nav-name').each((index, el) => {
+      if (checkRectIntersection($(el)[0].getBoundingClientRect(),$('#vision-page')[0].getBoundingClientRect())) {
+        $(el).css({color: 'white'})
+      } else {
+        $(el).css({color: '#888888'})
+      }
+  })
   $('.dot-nav').each((index,el) => {
     const id = $(el).attr('data-attribute')
     const $section = $(`#${id}`)
@@ -64,15 +71,7 @@ function triggerDotNav () {
     const bottom = top + $section.outerHeight(true)
     if(bottom > scrollPosition && top < scrollPosition) {
       $(el).addClass('active')
-      if (!navigateBySide) {
-        $(el).siblings('.dot-nav-name').addClass('active')
-      } else if (navigateBySide && currentSection === id) {
-        $(el).siblings('.dot-nav-name').addClass('active')
-      } else {
-        $(el).siblings('.dot-nav-name').removeClass('active')
-      }
     } else {
-      $(el).siblings('.dot-nav-name').removeClass('active')
       $(el).removeClass('active')
     }
   })
@@ -116,6 +115,12 @@ function modalHideInit () {
     $('.modal-hide-container').fadeOut('fast')
   })
 
+}
+function checkRectIntersection (rectA, rectB) {
+  return !(rectA.top > rectB.bottom ||
+    rectA.bottom < rectB.top ||
+    rectA.left > rectB.right ||
+    rectA.right < rectB.left)
 }
 
 function handleClickEvents () {
