@@ -387,7 +387,7 @@ h1 {
   width: 100%;
   text-align: center;
   display: block;
-  margin: 40px auto;
+  margin: 60px auto 40px auto;
 }
 #business-page video {
   max-width: 700px;
@@ -545,6 +545,7 @@ h1 {
 .board-detail .position {
   font-weight: 400;
   font-size: 14px;
+  font-family: Montserrat;
 }
 .board-detail img {
   margin: 0 auto;
@@ -621,6 +622,7 @@ h1 {
   text-align: left;
   border-bottom: 1px solid white;
   box-sizing: border-box;
+  text-transform: uppercase;
 }
 .collapse--faq .collapse-header {
   background-color: #c9c6c6;
@@ -637,11 +639,12 @@ h1 {
 .collapse--faq .collapse-content {
   background-color: #e0e0e0;
   padding: 10px 5%;
-  color: #626262;
+  color: #000000;
   font-family: kanit;
 }
 .collapse--faq .collapse-content ul li{
   list-style-type: decimal;
+  padding: 2px 0
 }
 .collapse--faq.active .collapse-content {
   display: block;
