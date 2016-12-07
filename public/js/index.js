@@ -33,7 +33,7 @@ function initSideBarNav () {
   $('.section').each((index, el) => {
     const id = $(el).prop('id')
     const name = $(el).find('.nav-hidden-name').html()
-    dots += `<div class='dot-nav-container'><span class='dot-nav-name'><b>${name}</b></span> <div class='dot-nav' data-attribute=${id}></div></div>`
+    dots += `<div class='dot-nav-container'><span class='dot-nav-name' style='${id === 'vision-page' ? 'color: white' : 'color: #888888'}'><b>${name}</b></span> <div class='dot-nav'} data-attribute=${id}></div></div>`
   })
   const htmlDots = $.parseHTML(dots)
   $(htmlDots).appendTo($('.side-navigation'))
@@ -151,7 +151,7 @@ function playGifImage (scrollPosition, callback) {
     $('.logo-fade-1').attr('src', `./images/LOGO-Panjaluk.gif?${Date.now()}`)
     setTimeout(() => {
       $('.logo-fade-1').animate({opacity: 0}, 1000, () => {
-        $('.logo-fade-2').attr('src', `./images/WEB_CHARM.gif?${Date.now()}`)
+        $('.logo-fade-2').css({opacity: 1}).attr('src', `./images/WEB_CHARM.gif?${Date.now()}`)
       })
     }, 4000)
   }
