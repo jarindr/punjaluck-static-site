@@ -10,9 +10,11 @@ body.modal-open {
 }
 a {
   text-decoration: none;
+  color: inherit;
 }
 a:hover {
   text-decoration: none;
+  color: inherit;
 }
 div {
   box-sizing: border-box;
