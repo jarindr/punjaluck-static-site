@@ -23,6 +23,94 @@ h1 {
   font-size: 40px!important;
 }
 /*------------------global----------------*/
+.contact-us-form {
+  font-size: 16px;
+  width: 100%;
+}
+.contact-us-form input {
+  display: inline-block;
+  width: 203px;
+  font-size: 12px;
+  padding: 5px;
+  margin: 5px 5px 5px 0;
+  border: 0;
+  color: black;
+  font-family: Montserrat;
+}
+.contact-us-form input::-webkit-input-placeholder {
+  font-family: Montserrat;
+  font-size: 12px;
+}
+.contact-us-form textarea {
+  display: block;
+  width: 415px;
+  height: 70px;
+  resize: none;
+  border: 0;
+  font-size: 12px;
+  padding: 5px;
+  margin: 5px 5px 5px 0;
+  color: black;
+}
+.contact-us-form button {
+  background: white;
+  color: black;
+  font-size:8px;
+  border: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.contact-us-form textarea::-webkit-input-placeholder {
+  font-family: Montserrat;
+  font-size: 12px;
+}
+.footer {
+  padding: 30px 5%;
+  background: #aa1a1e;
+  font-family: Montserrat;
+  color: white;
+  font-size: 0;
+}
+.footer .block {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+}
+.footer h2 {
+  font-size: 26px;
+}
+.footer .subBlock {
+  width: 33.33%;
+  vertical-align: top;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.subBlock ul {
+  padding: 0 10px;
+  padding-left: 0;
+  list-style-type: none;
+  font-size: 14px;
+}
+.footer-copy-right {
+  font-size: 12px;
+  font-family: Montserrat;
+  padding: 15px 5%;
+  color: white;
+  background: #90171a;
+}
+.subBlock ul li {
+  cursor: pointer;
+  font-size: 12px;
+  padding: 1px 0;
+  padding-left: 0;
+  opacity: 0.9;
+}
+.subBlock ul li:first-child {
+  margin-bottom: 10px;
+  opacity: 1;
+  font-size: 18px;
+}
 .thai {
   font-family: kanit;
 }
@@ -319,15 +407,6 @@ h1 {
 
 /*========================footer==========================*/
 
-.footer {
-  position: absolute;
-  height: 60px;
-  bottom: 0;
-  width: 100%;
-  display: table;
-  opacity: 0.9;
-  z-index: 10;
-}
 .section {
   position: relative;
   background-size: cover;

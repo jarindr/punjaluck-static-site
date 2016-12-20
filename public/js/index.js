@@ -120,7 +120,8 @@ function modalHideInit () {
     e.stopPropagation()
   })
   $(".modal-hide-container").click(e => {
-    $(".modal-hide-container").fadeOut('fast')
+    $('body').removeClass('modal-open')
+    $('.modal-hide-container').fadeOut('fast')
   })
 }
 function checkRectIntersection (rectA, rectB) {
