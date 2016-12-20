@@ -1,6 +1,6 @@
 let navigateBySide = false
 let currentSection = null
-
+let faqActive = 'พนักงานจองตั๋ว (Reservation officer)'
 $(document).ready( () => {
   initNavbarHandler()
   modalHideInit()
@@ -124,8 +124,12 @@ function checkRectIntersection (rectA, rectB) {
 }
 
 function handleClickEvents () {
+  $('.apply-now').click(e => {
+    window.location.href = `mailto:hr@panjaluck.com?Subject=${faqActive.trim()}`
+  })
   $('.collapse--faq').click((e) => {
     const $target = $(e.currentTarget)
+    faqActive = $target.find('.collapse-header').text()
     $target.toggleClass('active')
     $target.siblings().removeClass('active')
     $target.find('.collapse-content').slideToggle(400)
