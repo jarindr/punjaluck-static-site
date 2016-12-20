@@ -1,6 +1,7 @@
 let navigateBySide = false
 let currentSection = null
 let faqActive = 'พนักงานจองตั๋ว (Reservation officer)'
+let modalopen = false
 $(document).ready( () => {
   initNavbarHandler()
   modalHideInit()
@@ -108,13 +109,19 @@ function modalHideInit () {
     const id = $this.attr('href')
     $('body').addClass('modal-open')
     $(id).fadeIn('fast')
+    modalopen = true
   })
-  $('.x-modal').click(e=>{
+  $('.x-modal').click(e => {
     const $this = $(e.currentTarget)
     $('body').removeClass('modal-open')
     $('.modal-hide-container').fadeOut('fast')
   })
-
+  $(".modal-hide").click(e => {
+    e.stopPropagation()
+  })
+  $(".modal-hide-container").click(e => {
+    $(".modal-hide-container").fadeOut('fast')
+  })
 }
 function checkRectIntersection (rectA, rectB) {
   return !(rectA.top > rectB.bottom ||
