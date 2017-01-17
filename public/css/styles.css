@@ -746,8 +746,8 @@ a:visited:hover {
   font-family: kanit;
 }
 .collapse--faq .collapse-content ul li{
-  list-style-type: decimal;
-  padding: 2px 0
+  list-style: decimal inside none;
+  padding: 2px 0;
 }
 .collapse--faq.active .collapse-content {
   display: block;
