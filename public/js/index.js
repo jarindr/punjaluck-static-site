@@ -77,7 +77,13 @@ function triggerDotNav () {
     }
   })
 }
-
+$(window).on('load', () => {
+  const hash = window.location.hash.slice(1)
+  const top = $(`#${hash}`).offset().top - 80
+  $('html, body').animate({
+    scrollTop: top
+  }, 1, 'easeInOutExpo')
+})
 function initNavbarHandler () {
   $(document).on('click','#hamberger-menu', (e) => {
     $(e.currentTarget).toggleClass('open')
