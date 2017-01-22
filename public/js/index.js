@@ -2,6 +2,13 @@ let navigateBySide = false
 let currentSection = null
 let faqActive = 'พนักงานจองตั๋ว (Reservation officer)'
 let modalopen = false
+// $(window).on('load', () => {
+//   const hash = window.location.hash.slice(1)
+//   const top = $(`#${hash}`).offset().top - 80
+//   $('html, body').animate({
+//     scrollTop: top
+//   }, 1, 'easeInOutExpo')
+// })
 $(document).ready( () => {
   initNavbarHandler()
   modalHideInit()
@@ -77,13 +84,6 @@ function triggerDotNav () {
     }
   })
 }
-$(window).on('load', () => {
-  const hash = window.location.hash.slice(1)
-  const top = $(`#${hash}`).offset().top - 80
-  $('html, body').animate({
-    scrollTop: top
-  }, 1, 'easeInOutExpo')
-})
 function initNavbarHandler () {
   $(document).on('click','#hamberger-menu', (e) => {
     $(e.currentTarget).toggleClass('open')

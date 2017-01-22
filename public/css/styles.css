@@ -102,6 +102,12 @@ a:visited:hover {
   display: inline-block;
   margin-bottom: 20px;
 }
+.subBlock a{
+  opacity: 0.9;
+}
+.subBlock a:hover{
+  opacity: 1;
+}
 .subBlock ul {
   padding: 0 10px;
   padding-left: 0;
