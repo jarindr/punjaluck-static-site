@@ -511,7 +511,7 @@ a:visited:hover {
   text-align: left;
 }
 #vision-page {
-  background-position: bottom;
+  background-position: 0 50%;
   background-size: cover;
   z-index: 4;
 }
@@ -694,6 +694,7 @@ a:visited:hover {
 }
 #board-page {
   background-color: white;
+  overflow: hidden;
 }
 #board-page .caption h1{
   color:rgb(200, 35, 60) !important;

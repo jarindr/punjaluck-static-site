@@ -2,18 +2,23 @@ let navigateBySide = false
 let currentSection = null
 let faqActive = 'พนักงานจองตั๋ว (Reservation officer)'
 let modalopen = false
-// $(window).on('load', () => {
-//   const hash = window.location.hash.slice(1)
-//   const top = $(`#${hash}`).offset().top - 80
-//   $('html, body').animate({
-//     scrollTop: top
-//   }, 1, 'easeInOutExpo')
-// })
-$(document).ready( () => {
+$(window).on('load', () => {
+  const hash = window.location.hash.slice(1)
+  if (hash) {
+    const top = $(`#${hash}`).offset().top - 80
+    setTimeout(() => {
+      $('html, body').animate({
+        scrollTop: top
+      }, 1, 'easeInOutExpo')
+    })
+  }
+  $('.hackHidden').css({ display: 'block' })
+})
+$(document).ready(() => {
   initNavbarHandler()
   modalHideInit()
   backgroundChanger()
-  if($(window).width() > 768 ) {
+  if ($(window).width() > 768) {
     initSideBarNav()
   }
   triggerDotNav()
@@ -28,7 +33,7 @@ $(document).ready( () => {
   handleClickEvents()
   window.scrollTo(window.scrollX, window.scrollY + 1)
 })
-function backgroundChanger () {
+function backgroundChanger() {
   $("#vision-page").bgswitcher({
     images: [
       "../images/bg1vision.jpg",
@@ -36,7 +41,7 @@ function backgroundChanger () {
     ]
   })
 }
-function initSideBarNav () {
+function initSideBarNav() {
   let dots = ''
   $('.section').each((index, el) => {
     const id = $(el).prop('id')
@@ -47,49 +52,49 @@ function initSideBarNav () {
   $(htmlDots).appendTo($('.side-navigation'))
 }
 
-function bindScrollEvent () {
+function bindScrollEvent() {
   const $window = $(window)
   let playedGif = false
-  if($(window).width() > 768 ) {
-    window.addEventListener('scroll', ()=>{
+  if ($(window).width() > 768) {
+    window.addEventListener('scroll', () => {
       const scrollPosition = $window.scrollTop()
       // $('.parallax').each((index,el) => {
       //   parallax($(el), scrollPosition)
       // })
       triggerDotNav()
-      if(!playedGif) {
+      if (!playedGif) {
         playGifImage(scrollPosition, () => playedGif = true)
       }
     })
   }
 }
-function triggerDotNav () {
+function triggerDotNav() {
   const scrollPosition = $(window).scrollTop()
   $('.dot-nav-name').each((index, el) => {
-      if (checkRectIntersection($(el)[0].getBoundingClientRect(),$('#vision-page')[0].getBoundingClientRect())) {
-        $(el).css({color: 'white'})
-      } else {
-        $(el).css({color: '#888888'})
-      }
+    if (checkRectIntersection($(el)[0].getBoundingClientRect(), $('#vision-page')[0].getBoundingClientRect())) {
+      $(el).css({ color: 'white' })
+    } else {
+      $(el).css({ color: '#888888' })
+    }
   })
-  $('.dot-nav').each((index,el) => {
+  $('.dot-nav').each((index, el) => {
     const id = $(el).attr('data-attribute')
     const $section = $(`#${id}`)
     const top = $section.offset().top - 81 - 50
     const bottom = top + $section.outerHeight(true)
-    if(bottom > scrollPosition && top < scrollPosition) {
+    if (bottom > scrollPosition && top < scrollPosition) {
       $(el).addClass('active')
     } else {
       $(el).removeClass('active')
     }
   })
 }
-function initNavbarHandler () {
-  $(document).on('click','#hamberger-menu', (e) => {
+function initNavbarHandler() {
+  $(document).on('click', '#hamberger-menu', (e) => {
     $(e.currentTarget).toggleClass('open')
     $('.nav-bar__navigation-container').toggleClass('active')
   })
-  $(document).on('click','.dot-nav', (e) => {
+  $(document).on('click', '.dot-nav', (e) => {
     navigateBySide = true
     currentSection = $(e.currentTarget).attr('data-attribute')
     const top = $(`#${$(e.currentTarget).attr('data-attribute')}`).offset().top - 80
@@ -100,16 +105,16 @@ function initNavbarHandler () {
       navigateBySide = false
     }, 1600)
   })
-  $(document).on('mouseover','.dot-nav', (e) => {
+  $(document).on('mouseover', '.dot-nav', (e) => {
     $(e.currentTarget).siblings('.dot-nav-name').addClass('active')
   })
-  $(document).on('mouseout','.dot-nav', (e) => {
+  $(document).on('mouseout', '.dot-nav', (e) => {
     $(e.currentTarget).siblings('.dot-nav-name').removeClass('active')
   })
 }
 
-function modalHideInit () {
-  $('.modal-trigger').click((e)=>{
+function modalHideInit() {
+  $('.modal-trigger').click((e) => {
     e.preventDefault()
     const $this = $(e.currentTarget)
     const id = $this.attr('href')
@@ -130,14 +135,14 @@ function modalHideInit () {
     $('.modal-hide-container').fadeOut('fast')
   })
 }
-function checkRectIntersection (rectA, rectB) {
+function checkRectIntersection(rectA, rectB) {
   return !(rectA.top > rectB.bottom ||
     rectA.bottom < rectB.top ||
     rectA.left > rectB.right ||
     rectA.right < rectB.left)
 }
 
-function handleClickEvents () {
+function handleClickEvents() {
   $('.apply-now').click(e => {
     window.location.href = `mailto:hr@panjaluck.com?Subject=${faqActive.trim()}`
   })
@@ -149,32 +154,32 @@ function handleClickEvents () {
     $target.find('.collapse-content').slideToggle(400)
     $target.siblings().find('.collapse-content').slideUp(400)
   })
-  $('.readmore').click((e)=>{
+  $('.readmore').click((e) => {
     $('.hidden-readmore').show()
     $(e.currentTarget).hide()
   })
 }
 
-function parallax (target,scrollPosition) {
+function parallax(target, scrollPosition) {
   const parent = target.parent()
   const bottom = parent.offset().top + parent.outerHeight(true) - 80
   const top = parent.position().top
-  if (bottom > scrollPosition && top  < scrollPosition) {
-    const move = parseInt((scrollPosition -  top)/4)
+  if (bottom > scrollPosition && top < scrollPosition) {
+    const move = parseInt((scrollPosition - top) / 4)
     target.css({
       transform: `translate3d(0,${move}px,0)`
     })
   }
 }
 
-function playGifImage (scrollPosition, callback) {
+function playGifImage(scrollPosition, callback) {
   const position = $('#corporate-page').position()
-  if (position.top < scrollPosition + $(window).height()){
+  if (position.top < scrollPosition + $(window).height()) {
     callback()
     $('.logo-fade-1').attr('src', `./images/LOGO-Panjaluk.gif?${Date.now()}`)
     setTimeout(() => {
-      $('.logo-fade-1').animate({opacity: 0}, 1000, () => {
-        $('.logo-fade-2').css({opacity: 1}).attr('src', `./images/WEB_CHARM.gif?${Date.now()}`)
+      $('.logo-fade-1').animate({ opacity: 0 }, 1000, () => {
+        $('.logo-fade-2').css({ opacity: 1 }).attr('src', `./images/WEB_CHARM.gif?${Date.now()}`)
       })
     }, 4000)
   }
