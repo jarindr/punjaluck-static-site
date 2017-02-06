@@ -761,12 +761,13 @@ a:visited:hover {
 }
 .collapse-container {
   margin-top: 30px;
+  text-align: center;
 }
 .apply-now {
   background-color: #a61a1f;
   color: white;
   font-size: 12px;
-  width: fit-content;
+  display: inline-block;
   padding: 5px 70px;
   cursor: pointer;
   margin: 30px auto;
