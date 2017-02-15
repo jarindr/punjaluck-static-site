@@ -621,35 +621,39 @@ a:visited:hover {
 }
 .partner-detail .sub-title {
   font-style: italic;
-  font-weight: 400;
-  font-size: 17px!important;
+  font-weight: 600;
+  font-size: 14px!important;
   color: #575757;
 }
 .partner-detail p{
   color: #8c8c8c;
-  font-size: 17px;
+  font-size: 14px;
   line-height: 25px;
   font-weight: 400;
 }
 .partner-detail h2{
   margin: 10px 0;
   color: #575757;
+  font-size: 28px;
+  font-weight: 600;
 }
 .board-detail {
   text-align: left;
   font-family: kanit;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 300;
+}
+.Montserrat {
+  font-family: Montserrat;
 }
 .board-detail p{
   color: black;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 30px;
   font-weight: 400;
 }
 .board-detail .position {
-  font-weight: 400;
-  font-size: 14px;
+  font-size: 10px;
   font-family: Montserrat;
 }
 .board-detail img {
@@ -751,6 +755,7 @@ a:visited:hover {
   padding: 10px 5%;
   color: #000000;
   font-family: kanit;
+  font-size: 14px;
 }
 .collapse--faq .collapse-content ul li{
   list-style: decimal inside none;

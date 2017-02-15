@@ -11,6 +11,18 @@
     src: url('../fonts/Kanit/Kanit-Regular.ttf');
 }
 @font-face {
+    font-family: Kanit;
+    font-weight: 600;
+    font-style: normal;
+    src: url('../fonts/Kanit/Kanit-Medium.ttf');
+}
+@font-face {
+    font-family: Kanit;
+    font-weight: 600;
+    font-style: italic;
+    src: url('../fonts/Kanit/Kanit-MediumItalic.ttf');
+}
+@font-face {
     font-family: Montserrat;
     font-style: normal;
     src: url('../fonts/Montserrat/Montserrat-Regular.ttf');
