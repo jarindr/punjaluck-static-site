@@ -437,12 +437,20 @@ a:visited:hover {
   width: 100%;
   text-align: center;
   padding-top: 20px;
+  font-size: 14px;
   box-sizing: border-box;
   padding-left: 80px;
   padding-right: 80px;
   min-height: calc(100vh - 80px);
   background-color: white;
   overflow: hidden;
+}
+.section h1 {
+  font-size: 40px;
+  font-family: Montserrat!important;
+}
+.section p {
+  font-size: 14px!important;
 }
 .slide-arrows {
   position: absolute;
