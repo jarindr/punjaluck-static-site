@@ -30,8 +30,15 @@ $(document).ready(() => {
       dots: false
     }
   })
+  $('.dropdownSelect').click(()=>{
+    $('.customDropdown').toggle()
+  })
   handleClickEvents()
   window.scrollTo(window.scrollX, window.scrollY + 1)
+})
+window.addEventListener('resize', () => {
+    $("#vision-page").bgswitcher('destroy')
+    backgroundChanger()
 })
 function backgroundChanger() {
   $("#vision-page").bgswitcher({
@@ -58,9 +65,6 @@ function bindScrollEvent() {
   if ($(window).width() > 768) {
     window.addEventListener('scroll', () => {
       const scrollPosition = $window.scrollTop()
-      // $('.parallax').each((index,el) => {
-      //   parallax($(el), scrollPosition)
-      // })
       triggerDotNav()
       if (!playedGif) {
         playGifImage(scrollPosition, () => playedGif = true)
@@ -95,15 +99,11 @@ function initNavbarHandler() {
     $('.nav-bar__navigation-container').toggleClass('active')
   })
   $(document).on('click', '.dot-nav', (e) => {
-    navigateBySide = true
     currentSection = $(e.currentTarget).attr('data-attribute')
     const top = $(`#${$(e.currentTarget).attr('data-attribute')}`).offset().top - 80
     $('html, body').animate({
       scrollTop: top
     }, 1500, 'easeInOutExpo')
-    setTimeout(() => {
-      navigateBySide = false
-    }, 1600)
   })
   $(document).on('mouseover', '.dot-nav', (e) => {
     $(e.currentTarget).siblings('.dot-nav-name').addClass('active')
@@ -158,18 +158,6 @@ function handleClickEvents() {
     $('.hidden-readmore').show()
     $(e.currentTarget).hide()
   })
-}
-
-function parallax(target, scrollPosition) {
-  const parent = target.parent()
-  const bottom = parent.offset().top + parent.outerHeight(true) - 80
-  const top = parent.position().top
-  if (bottom > scrollPosition && top < scrollPosition) {
-    const move = parseInt((scrollPosition - top) / 4)
-    target.css({
-      transform: `translate3d(0,${move}px,0)`
-    })
-  }
 }
 
 function playGifImage(scrollPosition, callback) {
