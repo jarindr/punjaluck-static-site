@@ -114,6 +114,10 @@ a:visited:hover {
   list-style-type: none;
   font-size: 14px;
 }
+.partner-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
 .footer-copy-right {
   font-size: 12px;
   font-family: Montserrat;
@@ -902,6 +906,12 @@ a:visited:hover {
 }
 
 @media only screen and (max-width: 768px) {
+  .board-person-image {
+    display: none;
+  }
+  .partner-detail .modal-content {
+  padding-top: 5%;
+}
   .section {
     padding-top: 20px;
     padding-bottom: 50px;
@@ -955,7 +965,9 @@ a:visited:hover {
   right: -15px;
   }
   .modal-hide > img {
-    display: none;
+    display: block;
+    padding-top: 50px!important;
+    padding-left: 0!important;
   }
   .modal-content {
     padding-bottom: 50px!important;
@@ -969,7 +981,7 @@ a:visited:hover {
     overflow: hidden;
   }
   .modal-content {
-    max-height: 80vh;
+    max-height: 60vh;
     overflow-y: scroll;
   }
 }
@@ -978,14 +990,21 @@ a:visited:hover {
     position: fixed;
     padding: 0 20px;
   }
-
+  .partner-container {
+    max-width: 600px;
+  }
+  .board-card {
+    padding: 0 15px;
+  }
   #hamberger-menu {
     display: block;
   }
   .board-container {
     padding: 0;
   }
-
+  .seachImage {
+    width: 30px!important;
+  }
   .nav-bar__logo {
     position: relative;
     z-index: 20;
@@ -1024,7 +1043,9 @@ a:visited:hover {
     margin-left: 0;
     padding: 0
   }
-
+  .partner-detail.modal-content {
+    padding-top: 20px!important;
+  }
   .footer {
     display: none;
   }
