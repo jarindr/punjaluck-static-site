@@ -926,14 +926,16 @@ a:visited:hover {
   transform: rotate(180deg);
   background-color: white;
 }
-
 @media only screen and (max-width: 768px) {
+  .footer .block{
+    width: 100%;
+  }
   .board-person-image {
     display: none;
   }
   .partner-detail .modal-content {
   padding-top: 5%;
-}
+  }
   .section {
     padding-top: 20px;
     padding-bottom: 50px;
