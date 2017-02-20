@@ -559,7 +559,8 @@ a:visited:hover {
   text-align: center;
   color: white;
   font-family: kanit;
-  max-width: 700px;
+  max-width: 542px;
+  width: 100%;
   font-size: 18px;
   text-align: justify;
 }
@@ -934,10 +935,10 @@ a:visited:hover {
     display: block;
     margin: 20px auto;
     width: 100px;
-    height: 137.5px;
+    height: 165px;
   }
   .partner-detail .modal-content {
-  padding-top: 5%;
+    padding-top: 5%;
   }
   .section {
     padding-top: 20px;
@@ -955,7 +956,11 @@ a:visited:hover {
     bottom: 0;
   }
   .logo-box {
-    width: 150px;
+    width: 25%;
+    vertical-align: top;
+  }
+  .logo-box__content {
+    height: 150px;
   }
   .logo-box img {
     width: 120px!important;
@@ -1018,6 +1023,9 @@ a:visited:hover {
   .nav-bar {
     position: fixed;
     padding: 0 20px;
+  }
+  .logo-box {
+    width: 48%;
   }
   .nav-bar__navigation.dropdownSelect {
     position: fixed;
@@ -1112,10 +1120,5 @@ a:visited:hover {
   }
   .charm .letter {
     display: block;
-  }
-}
-@media screen and (max-width: 320px) {
-  .logo-box {
-    width: 135px;
   }
 }
