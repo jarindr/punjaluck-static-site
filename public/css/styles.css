@@ -1105,6 +1105,9 @@ a:visited:hover {
     background-position: top;
     background-size: 400%;
   }
+  .board-card a {
+    background-position: top!important;
+  }
   .board-detail .modal-content {
     height: 50vh;
     overflow-y: scroll;
