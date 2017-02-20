@@ -1114,3 +1114,8 @@ a:visited:hover {
     display: block;
   }
 }
+@media screen and (max-width: 320px) {
+  .logo-box {
+    width: 135px;
+  }
+}
