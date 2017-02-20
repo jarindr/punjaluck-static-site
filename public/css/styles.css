@@ -955,7 +955,10 @@ a:visited:hover {
     bottom: 0;
   }
   .logo-box {
-    width: 200px;
+    width: 150px;
+  }
+  .logo-box img {
+    width: 120px!important;
   }
   .side-navigation {
     display: none;
