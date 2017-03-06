@@ -102,6 +102,7 @@ h1 {
   font-family: Montserrat;
   color: white;
   font-size: 0;
+  box-sizing: border-box;
 }
 .footer .block {
   width: 50%;
@@ -1092,8 +1093,15 @@ a:visited:hover {
   .partner-detail.modal-content {
     padding-top: 20px!important;
   }
-  .footer {
-    display: none;
+  .block .subBlock {
+    width: 100%!important;
+  }
+  textarea, input {
+    width: 100%!important;
+    box-sizing: border-box!important;
+  }
+  .sitemap {
+    display: none!important;
   }
 
 }
