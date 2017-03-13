@@ -392,7 +392,7 @@ a:visited:hover {
 .search-option {
   padding: 10px 5px;
   background-color: white;
-  color;grey;
+  color: grey;
   border-bottom: 1px solid rgb(209, 209, 209);
 }
 .search-option:hover {
