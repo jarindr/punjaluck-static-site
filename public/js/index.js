@@ -214,6 +214,9 @@ $(document).ready(() => {
   $('.search-input').on('input', (e) => {
     search(e.target.value)
   })
+  $('.search-input').on('blur', (e) => {
+    $('.search-value-container').removeClass('active')
+  })
   handleClickEvents()
   window.scrollTo(window.scrollX, window.scrollY + 1)
 })
@@ -346,7 +349,8 @@ function handleClickEvents () {
     window.location.href = `mailto:hr@panjaluck.com?Subject=${faqActive.trim()}`
   })
   $('.seachImage').click(() => {
-    $('.search-input').toggleClass('active')
+    $('.search-value-container').toggleClass('active')
+    $('.search-input').focus()
   })
   $('.collapse--faq').click((e) => {
     const $target = $(e.currentTarget)

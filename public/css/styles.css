@@ -365,12 +365,11 @@ a:visited:hover {
 }
 .search-value-container {
   position: relative;
-  display: inline;
+  display: none;
   right: 0;
 }
 .search-value-container input {
   display: inline-block;
-  display: none;
   background-color: transparent;
   border: 1px solid grey;
   border-top: none;
@@ -380,7 +379,7 @@ a:visited:hover {
   transition: 0.3s;
   box-sizing: border-box;
 }
-.search-value-container input.active {
+.search-value-container.active {
   display: inline-block;
 }
 .search-suggestion-box {
