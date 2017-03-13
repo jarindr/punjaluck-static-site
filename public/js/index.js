@@ -1,7 +1,185 @@
-let navigateBySide = false
-let currentSection = null
-let faqActive = 'พนักงานจองตั๋ว (Reservation officer)'
-let modalopen = false
+const SearchText = {
+  'KAAN โชว์': 'https://kaanshow-ec4c0.firebaseapp.com/#INTRO-TO-KAAN/',
+  'โชว์คาน': 'https://kaanshow-ec4c0.firebaseapp.com/#INTRO-TO-KAAN',
+  'show in Thailand': 'https://kaanshow-ec4c0.firebaseapp.com/#INTRO-TO-KAAN',
+  'show in Pattaya': 'https://kaanshow-ec4c0.firebaseapp.com/#INTRO-TO-KAAN',
+  'โชว์พัทยา': 'https://kaanshow-ec4c0.firebaseapp.com/#INTRO-TO-KAAN',
+  'Fantasy Thailand': 'https://kaanshow-ec4c0.firebaseapp.com/#INTRO-TO-KAAN',
+  'Attraction Thailand ': 'https://kaanshow-ec4c0.firebaseapp.com/#INTRO-TO-KAAN',
+  'Attraction Pattaya': 'https://kaanshow-ec4c0.firebaseapp.com/#INTRO-TO-KAAN',
+  'Best show in Thailand': 'https://kaanshow-ec4c0.firebaseapp.com/#INTRO-TO-KAAN',
+  'Best show in Pattaya': 'https://kaanshow-ec4c0.firebaseapp.com/#INTRO-TO-KAAN',
+  'เรื่อง KAAN': ['https://kaanshow-ec4c0.firebaseapp.com/#THE-STORY', 'https://kaanshow-ec4c0.firebaseapp.com/#WORLD-OF-KAAN'],
+  'เนื้อเรื่อง KAAN': ['https://kaanshow-ec4c0.firebaseapp.com/#THE-STORY', 'https://kaanshow-ec4c0.firebaseapp.com/#WORLD-OF-KAAN'],
+  'เรื่องย่อ KAAN': ['https://kaanshow-ec4c0.firebaseapp.com/#THE-STORY', 'https://kaanshow-ec4c0.firebaseapp.com/#WORLD-OF-KAAN'],
+  'KAAN Story': ['https://kaanshow-ec4c0.firebaseapp.com/#THE-STORY', 'https://kaanshow-ec4c0.firebaseapp.com/#WORLD-OF-KAAN'],
+  'KAAN Script': ['https://kaanshow-ec4c0.firebaseapp.com/#THE-STORY', 'https://kaanshow-ec4c0.firebaseapp.com/#WORLD-OF-KAAN'],
+  'แรงบันดาลใจ KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/#THE-STORY',
+  'วรรณคดีไทย KAAN': ['https://kaanshow-ec4c0.firebaseapp.com/#THE-STORY', 'https://kaanshow-ec4c0.firebaseapp.com/#WORLD-OF-KAAN'],
+  'ที่ไปที่มา KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/#THE-STORY',
+  'เนื้อหา KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/#THE-STORY',
+  'เรื่อง KAAN โชว์': 'https://kaanshow-ec4c0.firebaseapp.com/#THE-STORY',
+  'รูป KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/#KAAN-GALLERY',
+  'KAAN KAAN-GALLERY': 'https://kaanshow-ec4c0.firebaseapp.com/#KAAN-GALLERY',
+  'KAAN Album ': 'https://kaanshow-ec4c0.firebaseapp.com/#KAAN-GALLERY',
+  'KAAN Picture': 'https://kaanshow-ec4c0.firebaseapp.com/#KAAN-GALLERY',
+  'KAAN Photo': 'https://kaanshow-ec4c0.firebaseapp.com/#KAAN-GALLERY',
+  'รูปการแสดง KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/#KAAN-GALLERY',
+  'รูปโชว์ KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/#KAAN-GALLERY',
+  'อัลบัมรูป KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/#KAAN-GALLERY',
+  'KAAN Character': 'https://kaanshow-ec4c0.firebaseapp.com/#KAAN-GALLERY',
+  'ตัวละคร KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/#KAAN-GALLERY',
+  'เบื้องหลัง KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/#MAKING-THE-SHOW',
+  'Behind the scene KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/#MAKING-THE-SHOW',
+  'KAAN VDO': 'https://kaanshow-ec4c0.firebaseapp.com/#MAKING-THE-SHOW',
+  'KAAN Clip': 'https://kaanshow-ec4c0.firebaseapp.com/#MAKING-THE-SHOW',
+  'KAAN YouTube': 'https://kaanshow-ec4c0.firebaseapp.com/#MAKING-THE-SHOW',
+  'Making of KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/#MAKING-THE-SHOW',
+  'KAAN Production': 'https://kaanshow-ec4c0.firebaseapp.com/#MAKING-THE-SHOW',
+  'KAAN Design ': 'https://kaanshow-ec4c0.firebaseapp.com/#MAKING-THE-SHOW',
+  'D’LUCK': 'https://d-luck.firebaseapp.com/#ABOUT-DLUCK',
+  'โรงละครดีลักษณ์': 'https://d-luck.firebaseapp.com/#ABOUT-DLUCK',
+  'ดีลักษณ์ พัทยา': ['https://d-luck.firebaseapp.com/#ABOUT-DLUCK', 'https://d-luck.firebaseapp.com/#GALLERY'],
+  'Cinematic Theatre': 'https://d-luck.firebaseapp.com/#ABOUT-DLUCK',
+  'โรงละครลอยได้': 'https://d-luck.firebaseapp.com/#ABOUT-DLUCK',
+  'Levitating Theatre ': 'https://d-luck.firebaseapp.com/#ABOUT-DLUCK',
+  'KAAN Theatre': 'https://d-luck.firebaseapp.com/#ABOUT-DLUCK',
+  'KAAN Venue': 'https://d-luck.firebaseapp.com/#ABOUT-DLUCK',
+  'สถานที่แสดง KAAN': 'https://d-luck.firebaseapp.com/#ABOUT-DLUCK',
+  'โรงละคร พัทยา': 'https://d-luck.firebaseapp.com/#ABOUT-DLUCK',
+  'รูปโรงละครดีลักษณ์': 'https://d-luck.firebaseapp.com/#GALLERY',
+  'รูป D’LUCK': 'https://d-luck.firebaseapp.com/#GALLERY',
+  'D’LUCK Gallery': 'https://d-luck.firebaseapp.com/#GALLERY',
+  'D’LCUK Album ': 'https://d-luck.firebaseapp.com/#GALLERY',
+  'D’LUCK Picture': 'https://d-luck.firebaseapp.com/#GALLERY',
+  'D’LUCK Photo': 'https://d-luck.firebaseapp.com/#GALLERY',
+  'D’LUCK Perspective': 'https://d-luck.firebaseapp.com/#GALLERY',
+  'D’LUCK Design': 'https://d-luck.firebaseapp.com/#GALLERY',
+  'Levitating Theatre': 'https://d-luck.firebaseapp.com/#GALLERY',
+  'ที่นั่ง KAAN': 'https://d-luck.firebaseapp.com/#SEATING-PLAN',
+  'ผังที่นั่ง KAAN': 'https://d-luck.firebaseapp.com/#SEATING-PLAN',
+  'Seating Plan KAAN': 'https://d-luck.firebaseapp.com/#SEATING-PLAN',
+  'KAAN Seating': 'https://d-luck.firebaseapp.com/#SEATING-PLAN',
+  'KAAN Booking': 'https://d-luck.firebaseapp.com/#SEATING-PLAN',
+  'KAAN Ticketing': 'https://d-luck.firebaseapp.com/#SEATING-PLAN',
+  'ที่นั่งที่ดีที่สุด KAAN': 'https://d-luck.firebaseapp.com/#SEATING-PLAN',
+  'หาที่นั่ง KAAN': 'https://d-luck.firebaseapp.com/#SEATING-PLAN',
+  'Best Seat KAAN': 'https://d-luck.firebaseapp.com/#SEATING-PLAN',
+  'ที่ตั้ง KAAN': 'https://d-luck.firebaseapp.com/#LOCATION-MAP',
+  'ที่ตั้ง D’LUCK': 'https://d-luck.firebaseapp.com/#LOCATION-MAP',
+  'KAAN Location': 'https://d-luck.firebaseapp.com/#LOCATION-MAP',
+  'D’LUCK Location': 'https://d-luck.firebaseapp.com/#LOCATION-MAP',
+  'KAAN Map': 'https://d-luck.firebaseapp.com/#LOCATION-MAP',
+  'D’LUCK Map': 'https://d-luck.firebaseapp.com/#LOCATION-MAP',
+  'KAAN อยู่ตรงไหน': 'https://d-luck.firebaseapp.com/#LOCATION-MAP',
+  'D’LUCK อยู่ตรงไหน': 'https://d-luck.firebaseapp.com/#LOCATION-MAP',
+  'แผนที่ D’LUCK': 'https://d-luck.firebaseapp.com/#LOCATION-MAP',
+  'แผนที่ KAAN ': 'https://d-luck.firebaseapp.com/#LOCATION-MAP',
+  'KAAN Street View': 'https://d-luck.firebaseapp.com/#THEATRE-360',
+  'D’LUCK Street View': 'https://d-luck.firebaseapp.com/#THEATRE-360',
+  'KAAN 360': 'https://d-luck.firebaseapp.com/#THEATRE-360',
+  'D’LUCK 360': 'https://d-luck.firebaseapp.com/#THEATRE-360',
+  'ดูภาพจริง KAAN': 'https://d-luck.firebaseapp.com/#THEATRE-360',
+  'ดูภายในโรงละคร KAAN': 'https://d-luck.firebaseapp.com/#THEATRE-360',
+  'ดูภายใน D’LUCK': 'https://d-luck.firebaseapp.com/#THEATRE-360',
+  'ภาพ 360 องศา D’LUCK': 'https://d-luck.firebaseapp.com/#THEATRE-360',
+  'สำรวจโรงละคร D’LUCK': 'https://d-luck.firebaseapp.com/#THEATRE-360',
+  'สำรวจ KAAN': 'https://d-luck.firebaseapp.com/#THEATRE-360',
+  'สิ่งอำนวยความสะดวก D’LUCK': 'https://d-luck.firebaseapp.com/#FACILITIES',
+  'D’LUCK Facility': 'https://d-luck.firebaseapp.com/#FACILITIES',
+  'ร้านอาหาร': 'https://d-luck.firebaseapp.com/#FACILITIES',
+  'ที่ขายตั๋ว': 'https://d-luck.firebaseapp.com/#FACILITIES',
+  'Ticket Center': 'https://d-luck.firebaseapp.com/#FACILITIES',
+  'ที่จอดรถ': 'https://d-luck.firebaseapp.com/#FACILITIES',
+  'ร้านขายของที่ระลึก': 'https://d-luck.firebaseapp.com/#FACILITIES',
+  'Souvenir Shop': 'https://d-luck.firebaseapp.com/#FACILITIES',
+  'ประชาสัมพันธ์': 'https://d-luck.firebaseapp.com/#FACILITIES',
+  'Food and Drink': 'https://d-luck.firebaseapp.com/#FACILITIES',
+  'ปัญจลักษณ์': 'https://punjaluck-a28c1.firebaseapp.com/##business-page',
+  'Panjaluck': 'https://punjaluck-a28c1.firebaseapp.com/#business-page',
+  'ประวัติปัญจลักษณ์': 'https://punjaluck-a28c1.firebaseapp.com/#business-page',
+  'Panjaluck history': 'https://punjaluck-a28c1.firebaseapp.com/#business-page',
+  'ประวัติ KAAN': 'https://punjaluck-a28c1.firebaseapp.com/#business-page',
+  'KAAN history': 'https://punjaluck-a28c1.firebaseapp.com/#business-page',
+  'ก่อตั้งปัญจลักษณ์': 'https://punjaluck-a28c1.firebaseapp.com/#business-page',
+  'Panjaluck founder ': 'https://punjaluck-a28c1.firebaseapp.com/#business-page',
+  'ก่อตั้ง KAAN': 'https://punjaluck-a28c1.firebaseapp.com/#business-page',
+  'KAAN founder ': 'https://punjaluck-a28c1.firebaseapp.com/#business-page',
+  'Panjaluck Vision': 'https://punjaluck-a28c1.firebaseapp.com/#vision-page',
+  'วิสัยทัศน์องค์กร ปัญจลักษณ์': 'https://punjaluck-a28c1.firebaseapp.com/#vision-page',
+  'KAAN Vision': 'https://punjaluck-a28c1.firebaseapp.com/#vision-page',
+  'วิสัยทัศน์องค์กร KAAN': 'https://punjaluck-a28c1.firebaseapp.com/#vision-page',
+  'Panjaluck Mission': 'https://punjaluck-a28c1.firebaseapp.com/#vision-page',
+  'พันธกิจองค์กร ปัญจลักษณ์': 'https://punjaluck-a28c1.firebaseapp.com/#vision-page',
+  'Panjaluck Business': 'https://punjaluck-a28c1.firebaseapp.com/#vision-page',
+  'Corporate Panjaluck': 'https://punjaluck-a28c1.firebaseapp.com/#corporate-page',
+  'Corporate Value Panjaluck': 'https://punjaluck-a28c1.firebaseapp.com/#corporate-page',
+  'ค่านิยมองค์กร ปัญจลักษณ์': 'https://punjaluck-a28c1.firebaseapp.com/#corporate-page',
+  'CHARM Panjaluck': 'https://punjaluck-a28c1.firebaseapp.com/#corporate-page',
+  'Panjaluck indentity ': 'https://punjaluck-a28c1.firebaseapp.com/#corporate-page',
+  'องค์กร ปัญจลักษณ์': 'https://punjaluck-a28c1.firebaseapp.com/#corporate-page',
+  'ผู้บริหาร ปัญจลักษณ์': 'https://punjaluck-a28c1.firebaseapp.com/#board-page',
+  'ผู้บริหาร KAAN': 'https://punjaluck-a28c1.firebaseapp.com/#board-page',
+  'KAAN Committee ': 'https://punjaluck-a28c1.firebaseapp.com/#board-page',
+  'KAAN Board': 'https://punjaluck-a28c1.firebaseapp.com/#board-page',
+  'Panjaluck Board': 'https://punjaluck-a28c1.firebaseapp.com/#board-page',
+  'Panjaluck management board ': 'https://punjaluck-a28c1.firebaseapp.com/#board-page',
+  'ทีมบริหาร KAAN': 'https://punjaluck-a28c1.firebaseapp.com/#board-page',
+  'กรรมการบริหาร ปัญจลักษณ์': 'https://punjaluck-a28c1.firebaseapp.com/#board-page',
+  'กรรมการบริหาร KAAN ': 'https://punjaluck-a28c1.firebaseapp.com/#board-page',
+  'KAAN CEO': 'https://punjaluck-a28c1.firebaseapp.com/#board-page',
+  'KAAN Partner': 'https://punjaluck-a28c1.firebaseapp.com/#partner-page',
+  'KAAN Business Partner ': 'https://punjaluck-a28c1.firebaseapp.com/#partner-page',
+  'พันธมิตร KAAN': 'https://punjaluck-a28c1.firebaseapp.com/#partner-page',
+  'Panjaluck Business Partner': 'https://punjaluck-a28c1.firebaseapp.com/#partner-page',
+  'สนุกดีทวีสุข': 'https://punjaluck-a28c1.firebaseapp.com/#partner-page',
+  'Scenario': 'https://punjaluck-a28c1.firebaseapp.com/#partner-page',
+  'BAANRIG': 'https://punjaluck-a28c1.firebaseapp.com/#partner-page',
+  'xtreme plus ': 'https://punjaluck-a28c1.firebaseapp.com/#partner-page',
+  'A49': 'https://punjaluck-a28c1.firebaseapp.com/#partner-page',
+  'ฤทธา ': 'https://punjaluck-a28c1.firebaseapp.com/#partner-page',
+  'สมัครงาน KAAN': 'https://punjaluck-a28c1.firebaseapp.com/#faq-page',
+  'สมัครงานดีลักษณ์': 'https://punjaluck-a28c1.firebaseapp.com/#faq-page',
+  'สมัครงาน D’LUCK': 'https://punjaluck-a28c1.firebaseapp.com/#faq-page',
+  'KAAN Job': 'https://punjaluck-a28c1.firebaseapp.com/#faq-page',
+  'D’LUCK Job': 'https://punjaluck-a28c1.firebaseapp.com/#faq-page',
+  'หางานพัทยา': 'https://punjaluck-a28c1.firebaseapp.com/#faq-page',
+  'ตำแหน่งว่างพัทยา': 'https://punjaluck-a28c1.firebaseapp.com/#faq-page',
+  'รับสมัครงานพัทยา': 'https://punjaluck-a28c1.firebaseapp.com/#faq-page',
+  'Entertainment Job': 'https://punjaluck-a28c1.firebaseapp.com/#faq-page',
+  'Job Pattaya': 'https://punjaluck-a28c1.firebaseapp.com/#faq-page',
+  'KAAN Ticket': 'https://kaanshow-ec4c0.firebaseapp.com/ticket/type/#TICKET',
+  'ตั๋ว KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/ticket/type/#TICKET',
+  'บัตร KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/ticket/type/#TICKET',
+  'KAAN booking': 'https://kaanshow-ec4c0.firebaseapp.com/ticket/type/#TICKET',
+  'จองตั๋ว KAAN': ['https://kaanshow-ec4c0.firebaseapp.com/ticket/type/#TICKET', 'https://d-luck.firebaseapp.com/#SEATING-PLAN'],
+  'KAAN ตั๋วราคาประหยัด ': 'https://kaanshow-ec4c0.firebaseapp.com/ticket/type/#TICKET',
+  'KAAN discount': 'https://kaanshow-ec4c0.firebaseapp.com/ticket/type/#TICKET',
+  'KAAN Promotion': 'https://kaanshow-ec4c0.firebaseapp.com/ticket/type/#TICKET',
+  'KAAN Sale': 'https://kaanshow-ec4c0.firebaseapp.com/ticket/type/#TICKET',
+  'Best price KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/ticket/type/#TICKET',
+  'ข่าว KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/info/download',
+  'KAAN News': 'https://kaanshow-ec4c0.firebaseapp.com/info/download',
+  'KAAN PR': 'https://kaanshow-ec4c0.firebaseapp.com/info/download',
+  'ข่าว PR KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/info/download',
+  'KAAN Press Release': 'https://kaanshow-ec4c0.firebaseapp.com/info/download',
+  'KAAN Fact Sheet': 'https://kaanshow-ec4c0.firebaseapp.com/info/download',
+  'KAAN Information': 'https://kaanshow-ec4c0.firebaseapp.com/info/download',
+  'KAAN Press': 'https://kaanshow-ec4c0.firebaseapp.com/info/download',
+  'ข่าวประชาสัมพันธ์ KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/info/download',
+  'D’LUCK News': 'https://kaanshow-ec4c0.firebaseapp.com/info/download',
+  'FAQ KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq',
+  'ถามตอบ KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq',
+  'Q&A KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq',
+  'Contact KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq',
+  'วิธีจองบัตร KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq',
+  'วิธีรับตั๋ว KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq',
+  'เปิดปิด KAAN': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq',
+  'Wheelchair': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq',
+  'คนพิการ': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq',
+  'เด็ก': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq'
+}
+
 $(window).on('load', () => {
   const hash = window.location.hash.slice(1)
   if (hash) {
@@ -33,6 +211,9 @@ $(document).ready(() => {
   $('.dropdownSelect').click(()=>{
     $('.customDropdown').toggle()
   })
+  $('.search-input').on('input', (e) => {
+    search(e.target.value)
+  })
   handleClickEvents()
   window.scrollTo(window.scrollX, window.scrollY + 1)
 })
@@ -47,6 +228,24 @@ function backgroundChanger() {
       "../images/bg2vision.jpg"
     ]
   })
+}
+function search (text) {
+  let matches = []
+  if (text.length) {
+    for (let k in SearchText) {
+      if (new RegExp(text).test(k.toLowerCase())) {
+        if (typeof SearchText[k] === 'object') {
+          matches = matches.concat(SearchText[k].map(x => ({ text: `${k} (${x.substring(x.indexOf('#') + 1)})`, link: x })))
+        } else {
+          matches.push({text: k, link: SearchText[k]})
+        }
+      }
+    }
+  }
+  $('.search-suggestion-box').empty()
+  for (const match of matches.slice(0,6)) {
+    $('.search-suggestion-box').append(`<a href='${match.link}' target='_blank'><div class='search-option'>${match.text}</div></a>`)
+  }
 }
 function initSideBarNav() {
   let dots = ''
@@ -99,7 +298,6 @@ function initNavbarHandler() {
     $('.nav-bar__navigation-container').toggleClass('active')
   })
   $(document).on('click', '.dot-nav', (e) => {
-    currentSection = $(e.currentTarget).attr('data-attribute')
     const top = $(`#${$(e.currentTarget).attr('data-attribute')}`).offset().top - 80
     $('html, body').animate({
       scrollTop: top
@@ -118,9 +316,8 @@ function modalHideInit() {
     e.preventDefault()
     const $this = $(e.currentTarget)
     const id = $this.attr('href')
-    $('body').addClass('modal-open')
+    // $('body').addClass('modal-open')
     $(id).fadeIn('fast')
-    modalopen = true
   })
   $('.x-modal').click(e => {
     const $this = $(e.currentTarget)
@@ -135,6 +332,7 @@ function modalHideInit() {
     $('.modal-hide-container').fadeOut('fast')
   })
 }
+
 function checkRectIntersection(rectA, rectB) {
   return !(rectA.top > rectB.bottom ||
     rectA.bottom < rectB.top ||
@@ -142,9 +340,13 @@ function checkRectIntersection(rectA, rectB) {
     rectA.right < rectB.left)
 }
 
-function handleClickEvents() {
+function handleClickEvents () {
+  let faqActive = 'พนักงานจองตั๋ว (Reservation officer)'
   $('.apply-now').click(e => {
     window.location.href = `mailto:hr@panjaluck.com?Subject=${faqActive.trim()}`
+  })
+  $('.seachImage').click(() => {
+    $('.search-input').toggleClass('active')
   })
   $('.collapse--faq').click((e) => {
     const $target = $(e.currentTarget)

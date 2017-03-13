@@ -363,6 +363,42 @@ a:visited:hover {
   z-index: 20;
   padding: 0 50px;
 }
+.search-value-container {
+  position: relative;
+  display: inline;
+  right: 0;
+}
+.search-value-container input {
+  display: inline-block;
+  display: none;
+  background-color: transparent;
+  border: 1px solid grey;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: grey;
+  transition: 0.3s;
+  box-sizing: border-box;
+}
+.search-value-container input.active {
+  display: inline-block;
+}
+.search-suggestion-box {
+  position: absolute;
+  width: 250px;
+  box-shadow : -2px 11px 30px -11px rgba(50,50,50,1) ;
+  right: 0;
+  color: grey;
+}
+.search-option {
+  padding: 10px 5px;
+  background-color: white;
+  color;grey;
+  border-bottom: 1px solid rgb(209, 209, 209);
+}
+.search-option:hover {
+  background-color: rgb(240, 240, 240);
+}
 
 .nav-bar__logo {
   display: inline-flex;
