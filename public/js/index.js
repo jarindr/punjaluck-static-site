@@ -205,7 +205,24 @@ $(document).ready(() => {
     slidesToShow: 3,
     dots: true,
     prevArrow: $('.slide-arrows.left'),
-    nextArrow: $('.slide-arrows.right')
+    nextArrow: $('.slide-arrows.right'),
+     responsive: [{
+        breakpoint: 500,
+      settings: {
+        slidesToShow: 2
+      }
+      },
+    {
+      breakpoint: 450,
+      settings: {
+        slidesToShow: 1,
+        adaptiveHeight: true
+      }
+    }
+    ],
+    customPaging: (slide, i) => {
+      return slide.slickCurrentSlide() === i ? '<div class="dot-nav-slide active" />' : '<div class="dot-nav-slide" />'
+    }
   });
   $('.dropdownSelect').click(()=>{
     $('.customDropdown').toggle()
