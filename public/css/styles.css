@@ -395,6 +395,17 @@ a:visited:hover {
   color: grey;
   border-bottom: 1px solid rgb(209, 209, 209);
 }
+.slick-container-slider {
+  width: calc(100% - 150px);
+  white-space: nowrap;
+  margin: 0 auto;
+}
+.slick-container-with-arrow {
+  max-width: 1050px;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
 .search-option:hover {
   background-color: rgb(240, 240, 240);
 }
@@ -523,10 +534,10 @@ a:visited:hover {
   cursor: pointer;
 }
 .slide-arrows.left{
-  left: 12%
+  left: 0;
 }
 .slide-arrows.right{
-  right: 12%
+  right: 0;
 }
 
 .slider, .slider-content {
@@ -777,6 +788,9 @@ a:visited:hover {
 }
 .board-card {
   padding: 0;
+  white-space: normal;
+  width: 33.33%
+  display: inline-block;
 }
 .board-card img {
   width: 100%;

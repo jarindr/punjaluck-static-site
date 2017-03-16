@@ -201,13 +201,12 @@ $(document).ready(() => {
   }
   triggerDotNav()
   bindScrollEvent()
-  $('#slider1').unslider({
-    arrows: {
-      prev: '<i class="flaticon-back slide-arrows left"></i>',
-      next: '<i class="flaticon-next slide-arrows right"></i>',
-      dots: false
-    }
-  })
+  $('.slick-container-slider').slick({
+    slidesToShow: 3,
+    dots: true,
+    prevArrow: $('.slide-arrows.left'),
+    nextArrow: $('.slide-arrows.right')
+  });
   $('.dropdownSelect').click(()=>{
     $('.customDropdown').toggle()
   })
