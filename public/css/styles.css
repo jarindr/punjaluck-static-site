@@ -540,14 +540,16 @@ a:visited:hover {
   position: relative;
   width: 100%;
   text-align: center;
-  padding-top: 20px;
   font-size: 14px;
   box-sizing: border-box;
   padding-left: 80px;
   padding-right: 80px;
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
   background-color: white;
-  overflow: hidden;
+  padding-top: 80px;
+  margin-top: -80px;
+  margin-bottom: 80px;
+  box-sizing: border-box;
 }
 .section h1 {
   font-size: 40px;
@@ -597,6 +599,7 @@ a:visited:hover {
 }
 #business-page {
   background-color: white;
+  padding-top: 80px!important;
 }
 #business-page img {
   max-width: 400px;
@@ -623,10 +626,39 @@ a:visited:hover {
   font-size: 18px;
   text-align: left;
 }
+.vision-page-bg {
+  background-image: url("../images/bg1vision.jpg");
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-size: cover;
+  transition: 1s;
+  z-index: -1;
+}
+.vision-page-bg.a {
+  background-image: url("../images/bg1vision.jpg");
+}
+.vision-page-bg.b {
+  background-image: url("../images/bg2vision.jpg");
+}
 #vision-page {
   background-size: cover;
   background-position: bottom;
   z-index: 4;
+  transition: 1s;
+  background-size: cover;
+}
+.vision-page-bg img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 1;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
 #vision-page h1 {
   color: white;
@@ -1012,6 +1044,9 @@ a:visited:hover {
   .footer .block{
     width: 100%;
   }
+  .vision-page-bg {
+    background-size: 400%;
+  }
   .board-person-image {
     display: block;
     margin: 20px auto;
@@ -1027,8 +1062,10 @@ a:visited:hover {
     padding-left: 20px;
     padding-right: 20px;
     height: auto;
+    min-height: auto;
     overflow:visible;
   }
+
   .modal-hide-container {
     position: fixed;
     height: 100vh;

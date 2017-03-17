@@ -179,18 +179,6 @@ const SearchText = {
   'คนพิการ': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq',
   'เด็ก': 'https://kaanshow-ec4c0.firebaseapp.com/info/faq'
 }
-
-$(window).on('load', () => {
-  const hash = window.location.hash.slice(1)
-  if (hash) {
-    const top = $('.container-app')[0].scrollTop + $(`#${hash}`).offset().top - 80
-    setTimeout(() => {
-      $('.container-app').animate({
-        scrollTop: top
-      }, 1, 'easeInOutExpo')
-    })
-  }
-})
 $(document).ready(() => {
   initNavbarHandler()
   modalHideInit()
@@ -237,17 +225,29 @@ $(document).ready(() => {
   handleClickEvents()
   window.scrollTo(window.scrollX, window.scrollY + 1)
 })
-window.addEventListener('resize', () => {
-    $("#vision-page").bgswitcher('destroy')
-    backgroundChanger()
-})
 function backgroundChanger() {
-  $("#vision-page").bgswitcher({
-    images: [
-      "../images/bg1vision.jpg",
-      "../images/bg2vision.jpg"
-    ]
+  let elements = []
+  let counter = 0
+  $("#vision-page").find('.vision-page-bg').each((i, e) => {
+    elements.push(e)
+    if(i !== 0) {
+      $(e).css({opacity: 0})
+    }
   })
+  setInterval(() => {
+    if(counter + 1 >= elements.length) {
+      counter = 0
+    } else {
+      counter ++
+    }
+    elements.map((x, i) => {
+      if(i !== counter) {
+        $(x).css({opacity: 0, zIndex: -2})
+      } else {
+        $(x).css({opacity: 1, zIndex: -1})
+      }
+    })
+  }, 5000)
 }
 function search (text) {
   let matches = []
@@ -318,7 +318,7 @@ function initNavbarHandler() {
     $('.nav-bar__navigation-container').toggleClass('active')
   })
   $(document).on('click', '.dot-nav', (e) => {
-    const top = $('.container-app')[0].scrollTop + $(`#${$(e.currentTarget).attr('data-attribute')}`).offset().top - 80
+    const top = $('.container-app')[0].scrollTop + $(`#${$(e.currentTarget).attr('data-attribute')}`).offset().top
     $('.container-app').animate({
       scrollTop: top
     }, 1500, 'easeInOutExpo')
