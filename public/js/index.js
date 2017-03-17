@@ -183,9 +183,9 @@ const SearchText = {
 $(window).on('load', () => {
   const hash = window.location.hash.slice(1)
   if (hash) {
-    const top = $(`#${hash}`).offset().top - 80
+    const top = $('.container-app')[0].scrollTop + $(`#${hash}`).offset().top - 80
     setTimeout(() => {
-      $('html, body').animate({
+      $('.container-app').animate({
         scrollTop: top
       }, 1, 'easeInOutExpo')
     })
