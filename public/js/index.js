@@ -190,7 +190,6 @@ $(window).on('load', () => {
       }, 1, 'easeInOutExpo')
     })
   }
-  $('.hackHidden').css({ display: 'block' })
 })
 $(document).ready(() => {
   initNavbarHandler()
@@ -203,20 +202,22 @@ $(document).ready(() => {
   bindScrollEvent()
   $('.slick-container-slider').slick({
     slidesToShow: 3,
-    dots: true,
+    dots: false,
     prevArrow: $('.slide-arrows.left'),
     nextArrow: $('.slide-arrows.right'),
      responsive: [{
         breakpoint: 500,
       settings: {
-        slidesToShow: 2
+        slidesToShow: 2,
+        dots: true
       }
       },
     {
       breakpoint: 450,
       settings: {
         slidesToShow: 1,
-        adaptiveHeight: true
+        adaptiveHeight: true,
+        dots: true
       }
     }
     ],
@@ -281,8 +282,8 @@ function bindScrollEvent() {
   const $window = $(window)
   let playedGif = false
   if ($(window).width() > 768) {
-    window.addEventListener('scroll', () => {
-      const scrollPosition = $window.scrollTop()
+    $('.container-app')[0].addEventListener('scroll', () => {
+      const scrollPosition = $('.container-app').scrollTop()
       triggerDotNav()
       if (!playedGif) {
         playGifImage(scrollPosition, () => playedGif = true)
@@ -317,8 +318,8 @@ function initNavbarHandler() {
     $('.nav-bar__navigation-container').toggleClass('active')
   })
   $(document).on('click', '.dot-nav', (e) => {
-    const top = $(`#${$(e.currentTarget).attr('data-attribute')}`).offset().top - 80
-    $('html, body').animate({
+    const top = $('.container-app')[0].scrollTop + $(`#${$(e.currentTarget).attr('data-attribute')}`).offset().top - 80
+    $('.container-app').animate({
       scrollTop: top
     }, 1500, 'easeInOutExpo')
   })
@@ -384,7 +385,7 @@ function handleClickEvents () {
 
 function playGifImage(scrollPosition, callback) {
   const position = $('#corporate-page').position()
-  if (position.top < scrollPosition + $(window).height()) {
+  if (position.top < scrollPosition + $('.container-app').height()) {
     callback()
     $('.logo-fade-1').attr('src', `./images/LOGO-Panjaluk.gif?${Date.now()}`)
     setTimeout(() => {
