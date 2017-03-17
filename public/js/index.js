@@ -190,6 +190,7 @@ $(document).ready(() => {
   bindScrollEvent()
   $('.slick-container-slider').slick({
     slidesToShow: 3,
+    slidesToScroll: 3,
     dots: false,
     prevArrow: $('.slide-arrows.left'),
     nextArrow: $('.slide-arrows.right'),
@@ -197,6 +198,7 @@ $(document).ready(() => {
         breakpoint: 500,
       settings: {
         slidesToShow: 2,
+        slidesToScroll: 2,
         dots: true
       }
       },
@@ -204,6 +206,7 @@ $(document).ready(() => {
       breakpoint: 450,
       settings: {
         slidesToShow: 1,
+        slidesToScroll: 1,
         adaptiveHeight: true,
         dots: true
       }

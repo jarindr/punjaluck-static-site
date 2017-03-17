@@ -66,22 +66,21 @@ h1 {
 .contact-us-form {
   font-size: 16px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 16px;
 }
 .contact-us-headline {
   font-size: 18px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 .contact-us-form input {
   display: inline-block;
-  width: 200px;
-  font-size: 14px;
+  width: calc(50% - 5px);
+  max-width: 200px;
   padding: 5px;
-  margin: 5px 5px 5px 0;
   border: 0;
-  color: black;
-  font-family: Montserrat;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  margin: 5px 5px 5px 0;
 }
 .contact-us-form input::-webkit-input-placeholder {
   font-family: Montserrat;
@@ -89,35 +88,40 @@ h1 {
 }
 .contact-us-form textarea {
   display: block;
-  width: 415px;
-  height: 70px;
   resize: none;
-  border: 0;
-  font-size: 14px;
   padding: 5px;
-  color: black;
-  box-sizing:content-box;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 405px;
+  height: 70px;
+  border: 0;
 }
 .contact-us-form button {
   background: white;
+  border: none;
   color: black;
-  font-size:8px;
-  border: 0;
-  padding: 5px 10px;
-  cursor: pointer;
+  display: table;
+  padding: 7px 10px;
+  margin-top: 10px;
   font-family: Montserrat;
+  cursor: pointer;
+  font-size: 8px;
 }
 .contact-us-form textarea::-webkit-input-placeholder {
   font-family: Montserrat;
   font-size: 12px;
 }
 .footer {
-  padding: 30px 5%;
+  padding: 30px 0;
   background: #aa1a1e;
   font-family: Montserrat;
   color: white;
   font-size: 0;
   box-sizing: border-box;
+}
+.footer-wraper {
+  max-width: calc(100% - 250px);
+  margin: 0 auto;
 }
 .footer .block {
   width: 50%;
@@ -160,7 +164,7 @@ a:visited:hover {
 .footer-copy-right {
   font-size: 12px;
   font-family: Montserrat;
-  padding: 15px 5%;
+  padding: 15px 120px;
   color: white;
   background: #90171a;
 }
@@ -168,6 +172,8 @@ a:visited:hover {
   font-size: 12px;
   padding-left: 0;
   opacity: 0.9;
+  list-style-type: none;
+  padding: 2px 0;
 }
 .subBlock a {
   cursor: pointer;
@@ -455,10 +461,10 @@ a:visited:hover {
 }
 
 .nav-bar__navigation {
-  padding: 0 10px;
   font-size: 12px;
   color: #aaa8a8;
   cursor: pointer;
+  margin: 0 10px;
 }
 .nav-bar__navigation.active{
   color: #888888;
@@ -467,8 +473,7 @@ a:visited:hover {
 .nav-bar__navigation.ticket {
   background-color: #be9b42;
   color: white;
-  padding: 2px 10px;
-  margin-left: 10px;
+  padding: 0 10px;
 }
 
 #hamberger-menu {
@@ -864,9 +869,11 @@ a:visited:hover {
   background-size: cover;
   background-position: center;
 }
+.select-dropdown {
+  padding: 5px 8px;
+}
 .main.active {
   opacity: 1;
-
 }
 .board-container {
   padding: 50px 20% 0 20%;
@@ -956,7 +963,9 @@ a:visited:hover {
   position: absolute;
   z-index: 5;
 }
-
+.dropdownSelect {
+  margin-left: 15px;
+}
 .circle-navigation {
   display: inline-block;
   width: 8px;
@@ -999,6 +1008,10 @@ a:visited:hover {
   margin-left: -1px;
   margin-top: -4px;
   opacity: 0.5;
+}
+.seachImage {
+  margin-bottom: 3px;
+  margin-left: 4px;
 }
 /*=================PLUS MINUS */
 
@@ -1043,6 +1056,24 @@ a:visited:hover {
 @media only screen and (max-width: 768px) {
   .footer .block{
     width: 100%;
+  }
+  .footer {
+    padding: 30px 5%;
+  }
+  .footer input {
+    max-width: 100%;
+    width: 100%;
+  }
+  .footer textarea {
+    max-width: 100%;
+    margin: 5px 0;
+  }
+  .footer-wraper {
+    max-width: 100%;
+  }
+  .footer-copy-right {
+    padding-left: 5%;
+    padding-right: 5%;
   }
   .vision-page-bg {
     background-size: 400%;
